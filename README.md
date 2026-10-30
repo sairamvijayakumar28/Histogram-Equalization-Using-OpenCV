@@ -70,10 +70,61 @@ Display original color image, histogram, enhanced image, and enhanced histogram 
 ## Program
 
 ### Developed By:
-**Name:** ____________________________  
+## Name: Sairam V
+### Register No: 212225230237
 
-### Register No:
-____________________________  
+
+```
+# Import required libraries
+
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image
+img = cv2.imread('parrot.jpg', cv2.IMREAD_GRAYSCALE)
+
+img.shape
+# Display the grayscale image.
+
+plt.imshow(img, cmap='gray')
+plt.title('Original Image')
+plt.show()
+
+# Plot the histogram of the grayscale image
+# Display the images
+plt.hist(img.ravel(),256,range = [0, 256]);
+plt.title('Original Image')
+plt.show()
+# Perform histogram equalization
+# Equalize histogram
+img_eq = cv2.equalizeHist(img)
+
+# Display the images.
+plt.hist(img_eq.ravel(), 256, range = [0, 256])
+plt.title('Equalized Histogram')
+# Display [1] the Original Image (Gray Image) and its Histogram, and [2] the Enhanced Image and its Histogram using a 2×2 layout in Matplotlib.
+
+# Display the images.
+plt.imshow(img_eq, cmap='gray')
+plt.title('Original Image')
+plt.show()
+img = cv2.imread('parrot.jpg', cv2.IMREAD_COLOR)
+
+ #Convert to HSV.
+img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+# Perform histogram equalization
+img_hsv[:,:,2] = cv2.equalizeHist(img_hsv[:, :, 2])
+# Convert back to BGR format
+img_eq = cv2.cvtColor(img_hsv, cv2.COLOR_HSV2BGR)
+# Display
+plt.imshow(img_eq[:,:,::-1]); plt.title('Equalized Image');plt.show()
+
+# Plot the histogram of colour image
+plt.hist(img_eq.ravel(),256,range = [0, 256]); plt.title('Histogram Equalized');plt.show()
+
+
+
+```
 
 ---
 
@@ -84,7 +135,10 @@ ____________________________
 - Original grayscale image is displayed  
 - Histogram of original grayscale image is plotted  
 - Enhanced image after histogram equalization is displayed  
-- Histogram of enhanced grayscale image shows improved contrast  
+- Histogram of enhanced grayscale image shows improved contrast
+<img width="714" height="450" alt="image" src="https://github.com/user-attachments/assets/f00ef505-8756-43fb-8d11-097f0af164ad" />
+ <img width="715" height="510" alt="image" src="https://github.com/user-attachments/assets/29e70a7b-dac4-4d8b-8896-b8aee726e19a" />
+ <img width="708" height="538" alt="image" src="https://github.com/user-attachments/assets/0a57b35a-b4f7-4373-b9a8-fecce2bf5d8a" />
 
 ### Color Image Histogram Equalization
 
@@ -92,6 +146,8 @@ ____________________________
 - Histogram of B, G, R channels is plotted  
 - Enhanced image after HSV-based equalization is displayed  
 - Histogram of enhanced image shows better intensity distribution  
+<img width="692" height="428" alt="image" src="https://github.com/user-attachments/assets/d7d09827-5de9-40ad-b99e-442549f88dae" />
+<img width="713" height="526" alt="image" src="https://github.com/user-attachments/assets/a7812089-f4fe-42b0-9cd7-8ac10bd26b60" />
 
 ---
 
